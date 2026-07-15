@@ -1,4 +1,7 @@
-/* ========== 基础 ========== */
+/* ===========================
+   TanGhoooo Personal Website
+   Version 2.0
+=========================== */
 
 *{
     margin:0;
@@ -6,159 +9,235 @@
     box-sizing:border-box;
 }
 
+html{
+
+    scroll-behavior:smooth;
+
+}
+
 body{
 
     font-family:Arial,sans-serif;
 
-    background-image:url("star.jpg");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-
-    animation:bgMove 100s linear infinite;
+    background:url("star.jpg") center/cover fixed;
 
     min-height:100vh;
 
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-
-    color:#222;
+    color:#111;
 
     overflow-x:hidden;
+
 }
 
-/* ========== 主卡片 ========== */
+/* ===========================
+   三栏布局
+=========================== */
 
-.card{
+.layout{
 
-    width:430px;
+    max-width:1500px;
 
     margin:80px auto;
 
-    padding:40px;
+    padding:0 40px;
 
-    text-align:center;
+    display:flex;
 
-    background:rgba(255,255,255,.22);
+    align-items:flex-start;
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    justify-content:center;
 
-    border-radius:25px;
-
-    border:1px solid rgba(255,255,255,.25);
-
-    box-shadow:0 15px 40px rgba(0,0,0,.3);
-
-    animation:showCard .8s ease;
-
-    transition:.35s;
-}
-
-.card:hover{
-
-    transform:translateY(-8px) scale(1.01);
+    gap:250px;
 
 }
 
-/* ========== 左右卡片 ========== */
+/* ===========================
+   通用卡片
+=========================== */
 
+.card,
 .side-card{
 
-    width:260px;
-
-    padding:25px;
-
-    background:rgba(255,255,255,.18);
+    background:rgba(255,255,255,.28);
 
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
 
-    border-radius:20px;
+    border:1px solid rgba(255,255,255,.35);
 
-    border:1px solid rgba(255,255,255,.25);
+    border-radius:24px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
 
     transition:.35s;
 
 }
 
+.card:hover,
 .side-card:hover{
 
     transform:translateY(-6px);
 
 }
 
+/* ===========================
+   左侧
+=========================== */
+
 .left-card{
-
-    position:fixed;
-
-    left:40px;
-
-    top:80px;
-
-}
-
-.right-card{
-
-    position:fixed;
-
-    right:40px;
-
-    top:120px;
 
     width:330px;
 
+    padding:30px;
+
+    flex-shrink:0;
+
 }
 
-/* ========== 头像 ========== */
+/* ===========================
+   中间
+=========================== */
+
+.card{
+
+    width:460px;
+
+    padding:40px;
+
+    text-align:center;
+
+    flex-shrink:0;
+
+}
+
+/* ===========================
+   右侧
+=========================== */
+
+.right-card{
+
+    width:330px;
+
+    padding:30px;
+
+    flex-shrink:0;
+
+}
+/* ===========================
+   头像
+=========================== */
+
+.avatar-box{
+
+    position:relative;
+
+    display:inline-block;
+
+}
 
 .avatar{
 
-    width:130px;
+    width:140px;
 
-    height:130px;
+    height:140px;
 
     border-radius:50%;
 
     object-fit:cover;
 
-    border:4px solid white;
+    border:4px solid #fff;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.35);
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.3);
 
     animation:floatAvatar 4s ease-in-out infinite;
 
+    transition:.3s;
+
 }
 
-/* ========== 标题 ========== */
+.avatar:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ===========================
+   头像提示
+=========================== */
+
+.avatar-tip{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-58px;
+
+    transform:translateX(-50%) translateY(12px);
+
+    background:rgba(0,0,0,.82);
+
+    color:#fff;
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+.avatar-box:hover .avatar-tip{
+
+    opacity:1;
+
+    transform:translateX(-50%) translateY(0);
+
+}
+
+/* ===========================
+   标题
+=========================== */
 
 h1{
 
-    margin-top:25px;
+    margin-top:24px;
 
     font-size:42px;
 
-    color:#111;
+    color:#000;
 
 }
 
 h2{
 
-    margin:20px 0;
+    margin:18px 0;
+
+    color:#000;
 
 }
 
 h3{
 
+    color:#000;
+
     margin-bottom:8px;
 
 }
 
-/* ========== 状态 ========== */
+/* ===========================
+   状态栏
+=========================== */
 
 .status{
 
@@ -170,7 +249,7 @@ h3{
 
     gap:10px;
 
-    margin:20px 0 30px;
+    margin:22px 0 30px;
 
     font-weight:bold;
 
@@ -184,25 +263,59 @@ h3{
 
     border-radius:50%;
 
-    background:#00ff66;
+    background:#00d26a;
 
-    box-shadow:0 0 12px #00ff66;
+    box-shadow:0 0 12px #00d26a;
 
 }
 
-/* ========== 文字 ========== */
+/* ===========================
+   正文
+=========================== */
+
+.about{
+
+    text-align:left;
+
+}
 
 .about p{
 
     margin:18px 0;
 
-    line-height:1.8;
+    line-height:1.9;
 
-    color:#333;
+    color:#111;
 
 }
 
-/* ========== 按钮 ========== */
+/* ===========================
+   左右卡片文字
+=========================== */
+
+.side-card{
+
+    color:#111;
+
+}
+
+.side-card ul{
+
+    padding-left:20px;
+
+    margin-top:12px;
+
+}
+
+.side-card li{
+
+    margin:10px 0;
+
+    line-height:1.6;
+
+}/* ===========================
+   按钮
+=========================== */
 
 .links{
 
@@ -214,7 +327,7 @@ h3{
 
     display:inline-block;
 
-    margin:10px;
+    margin:8px;
 
     padding:12px 24px;
 
@@ -222,11 +335,13 @@ h3{
 
     text-decoration:none;
 
-    color:#222;
+    color:#111;
 
-    background:rgba(255,255,255,.45);
+    background:rgba(255,255,255,.55);
 
-    transition:.3s;
+    font-weight:bold;
+
+    transition:all .3s ease;
 
 }
 
@@ -234,31 +349,43 @@ h3{
 
     transform:translateY(-5px);
 
-    background:rgba(255,255,255,.8);
+    background:#fff;
 
-    box-shadow:0 10px 20px rgba(0,0,0,.2);
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
 
 }
 
-/* ========== 项目 ========== */
+/* ===========================
+   Project
+=========================== */
 
 .project-item{
 
-    margin:20px 0;
+    margin:18px 0;
 
-    padding:15px;
+    padding:18px;
 
-    border-radius:15px;
+    border-radius:16px;
 
     background:rgba(255,255,255,.18);
+
+    transition:.3s;
+
+}
+
+.project-item:hover{
+
+    transform:translateY(-5px);
+
+    background:rgba(255,255,255,.35);
 
 }
 
 .project-item p{
 
-    margin:10px 0;
+    margin:8px 0;
 
-    font-size:15px;
+    color:#111;
 
 }
 
@@ -268,39 +395,39 @@ h3{
 
     margin-top:8px;
 
-    padding:5px 12px;
+    padding:6px 14px;
 
-    border-radius:20px;
+    border-radius:30px;
 
     background:#2ecc71;
 
-    color:white;
+    color:#fff;
 
     font-size:13px;
 
-}
-
-/* ========== 动画 ========== */
-
-@keyframes showCard{
-
-    from{
-
-        transform:translateY(30px);
-
-        opacity:0;
-
-    }
-
-    to{
-
-        transform:translateY(0);
-
-        opacity:1;
-
-    }
+    font-weight:bold;
 
 }
+
+/* ===========================
+   分割线
+=========================== */
+
+hr{
+
+    border:none;
+
+    height:1px;
+
+    background:rgba(0,0,0,.15);
+
+    margin:24px 0;
+
+}
+
+/* ===========================
+   动画
+=========================== */
 
 @keyframes floatAvatar{
 
@@ -316,26 +443,119 @@ h3{
 
     }
 
+}/* ===========================
+   页面动画
+=========================== */
+
+@keyframes showCard{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
 
-@keyframes bgMove{
+.card{
 
-    0%{
+    animation:showCard .8s ease;
 
-        background-position:center top;
+}
+
+.left-card{
+
+    animation:showCard .8s ease;
+
+}
+
+.right-card{
+
+    animation:showCard .8s ease .15s backwards;
+
+}
+
+/* ===========================
+   响应式
+=========================== */
+
+@media (max-width:1300px){
+
+    .layout{
+
+        gap:25px;
+
+        padding:20px;
 
     }
 
-    50%{
+    .left-card,
+    .right-card{
 
-        background-position:center bottom;
+        width:280px;
+
+    }
+
+}
+
+@media (max-width:1050px){
+
+    .layout{
+
+        flex-direction:column;
+
+        align-items:center;
 
     }
 
-    100%{
+    .card,
+    .left-card,
+    .right-card{
 
-        background-position:center top;
+        width:95%;
+
+        max-width:700px;
 
     }
+
+}
+
+/* ===========================
+   滚动条
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:rgba(255,255,255,.1);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:rgba(255,255,255,.4);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:rgba(255,255,255,.6);
 
 }
