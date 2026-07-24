@@ -559,3 +559,445 @@ hr{
     background:rgba(255,255,255,.6);
 
 }
+/*========================================================
+                LOVE CAROUSEL 2.0
+========================================================*/
+
+.favorites{
+
+    width:min(1500px,92%);
+
+    margin:140px auto;
+
+}
+
+.favorites-title{
+
+    text-align:center;
+
+    color:white;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.favorites-title span{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:22px;
+
+    color:#b8b8b8;
+
+    font-weight:400;
+
+}
+
+.favorites-subtitle{
+
+    text-align:center;
+
+    color:#cfcfcf;
+
+    line-height:1.8;
+
+    margin-bottom:70px;
+
+}
+
+.favorites-subtitle span{
+
+    display:block;
+
+    margin-top:8px;
+
+}
+
+.favorite-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:42px;
+
+}
+
+.carousel-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    transition:.45s;
+
+    position:relative;
+
+}
+
+.carousel-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(95,175,255,.55);
+
+    box-shadow:
+
+    0 18px 45px rgba(0,0,0,.35),
+
+    0 0 35px rgba(55,145,255,.18);
+
+}
+
+.carousel-window{
+
+    height:470px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:#111;
+
+}
+
+.carousel-track{
+
+    transition:
+
+    transform .65s cubic-bezier(.22,1,.36,1);
+
+}
+
+.carousel-item{
+
+    height:470px;
+
+}
+
+.carousel-item img{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:.45s;
+
+}
+
+.carousel-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+.favorite-info{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    padding:25px;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+        transparent,
+        rgba(0,0,0,.85)
+    );
+
+}
+
+.favorite-info h3{
+
+    color:white;
+
+    font-size:30px;
+
+    margin-bottom:8px;
+
+}
+
+.favorite-info h4{
+
+    color:#c7c7c7;
+
+    font-size:18px;
+
+    font-weight:400;
+
+    margin-bottom:18px;
+
+}
+
+.favorite-info p{
+
+    color:white;
+
+    font-weight:600;
+
+    margin-bottom:6px;
+
+}
+
+.favorite-info span{
+
+    color:#9d9d9d;
+
+}
+
+/*==============================
+    Carousel Animation
+==============================*/
+
+.carousel-track{
+
+    display:flex;
+
+    flex-direction:column;
+
+    will-change:transform;
+
+}
+
+.carousel-item{
+
+    flex-shrink:0;
+
+    position:relative;
+
+}
+
+.carousel-window{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.carousel-item img{
+
+    user-select:none;
+
+    pointer-events:none;
+}
+
+/* ===========================
+   3D 滚筒海报效果
+=========================== */
+
+.carousel-window{
+
+    perspective:900px;
+
+}
+
+
+.carousel-track{
+
+    transform-style:preserve-3d;
+
+}
+
+/* ===========================
+   滚筒旋转效果
+=========================== */
+
+.carousel-window{
+
+    perspective:1200px;
+    overflow:hidden;
+
+}
+
+
+.carousel-track{
+
+    transform-style:preserve-3d;
+
+    transition:
+    transform .8s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+.carousel-item{
+
+    transform-origin:center center;
+
+    backface-visibility:hidden;
+
+}
+
+
+.carousel-item{
+
+    backface-visibility:hidden;
+
+    transform-style:preserve-3d;
+
+}
+
+.carousel-item{
+
+    transition:
+    transform .7s ease,
+    opacity .7s ease;
+
+}
+
+
+.carousel-item.active{
+
+    transform:
+    translateZ(80px)
+    scale(1.05);
+
+}
+
+
+.carousel-item.prev{
+
+    transform:
+    translateY(-80px)
+    rotateX(45deg)
+    scale(.85);
+
+    opacity:.5;
+
+}
+
+
+.carousel-item.next{
+
+    transform:
+    translateY(80px)
+    rotateX(-45deg)
+    scale(.85);
+
+    opacity:.5;
+
+}
+/* ===== 海报滚筒动画 ===== */
+
+.carousel-window{
+    position:relative;
+    overflow:hidden;
+}
+
+
+.carousel-track{
+    position:relative;
+    height:100%;
+}
+
+
+.carousel-item{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+
+    opacity:0;
+
+    transform:translateY(100%) scale(.95);
+
+    transition:
+        transform .7s cubic-bezier(.22,1,.36,1),
+        opacity .7s ease;
+}
+
+
+.carousel-item.active{
+
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+.carousel-item.next{
+
+    opacity:.3;
+
+    transform:
+        translateY(100%)
+        scale(.95);
+
+}
+
+
+.carousel-item.prev{
+
+    opacity:.3;
+
+    transform:
+        translateY(-100%)
+        scale(.95);
+
+}
+
+/* Top Gun文字描边 */
+
+.topgun-card .favorite-info h3{
+    color:#444;
+    text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff;
+}
+
+.topgun-card .favorite-info h4{
+    color:#555;
+    text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff;
+}
+
+.topgun-card .favorite-info p{
+    color:#444;
+    text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff;
+}
+
+.topgun-card .favorite-info span{
+    color:#666;
+    text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff;
+}
