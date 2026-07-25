@@ -47,7 +47,7 @@ body{
 
     justify-content:center;
 
-    gap:250px;
+    gap:200px;
 
 }
 
@@ -117,11 +117,9 @@ body{
 
 .right-card{
 
-    width:330px;
+    width:100%;
 
     padding:30px;
-
-    flex-shrink:0;
 
 }
 /* ===========================
@@ -1000,4 +998,422 @@ hr{
          1px -1px 0 #fff,
         -1px  1px 0 #fff,
          1px  1px 0 #fff;
+}
+/*=========================
+  Right Column
+=========================*/
+
+.right-column{
+
+    width:330px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+    flex-shrink:0;
+
+}
+
+.right-column{
+
+    width:330px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/*==============================
+    Spotify Music Card
+==============================*/
+
+.music-card{
+
+    width:100%;
+    height:120px;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    padding:18px;
+
+    border-radius:22px;
+
+    text-decoration:none;
+
+    background:rgba(18,18,18,.65);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+    transition:.35s;
+
+}
+
+.music-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#1DB954;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.45),
+        0 0 25px rgba(29,185,84,.35);
+
+}
+
+.music-cover{
+
+    width:82px;
+    height:82px;
+
+    border-radius:16px;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.45);
+
+    transition:.35s;
+
+}
+
+.music-card:hover .music-cover{
+
+    transform:scale(1.08) rotate(-2deg);
+
+}
+
+.music-card:hover .music-cover{
+
+    transform:scale(1.05);
+
+}
+
+.music-content{
+
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+}
+
+.music-content h3{
+
+    color:#bdbdbd;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+
+    font-weight:500;
+
+}
+
+.music-content h4{
+
+    color:white;
+
+    font-size:24px;
+
+    margin-bottom:6px;
+
+    font-weight:700;
+
+}
+
+.music-content p{
+
+    color:#8b8b8b;
+
+    font-size:15px;
+
+}
+
+.equalizer{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:3px;
+
+    margin-top:12px;
+
+}
+
+.equalizer span{
+
+    width:4px;
+
+    border-radius:10px;
+
+    background:#1DB954;
+
+    animation:music 1s infinite ease-in-out;
+
+}
+
+.equalizer span:nth-child(1){height:10px;animation-delay:.1s;}
+.equalizer span:nth-child(2){height:18px;animation-delay:.3s;}
+.equalizer span:nth-child(3){height:13px;animation-delay:.5s;}
+.equalizer span:nth-child(4){height:22px;animation-delay:.2s;}
+.equalizer span:nth-child(5){height:15px;animation-delay:.4s;}
+.equalizer span:nth-child(6){height:20px;animation-delay:.6s;}
+.equalizer span:nth-child(7){height:12px;animation-delay:.25s;}
+
+@keyframes music{
+
+    0%,100%{
+
+        transform:scaleY(.45);
+
+    }
+
+    50%{
+
+        transform:scaleY(1);
+
+    }
+
+}
+
+/* ===============================
+        Coffee Counter
+================================ */
+
+.coffee-card{
+
+    width:100%;
+    height:120px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:18px;
+
+    border-radius:22px;
+
+
+    background:
+    rgba(255,255,255,.18);
+
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+
+    border:
+    1px solid rgba(255,255,255,.25);
+
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+
+
+    transition:.35s;
+
+}
+
+
+.coffee-card:hover{
+
+    transform:translateY(-6px);
+
+
+    box-shadow:
+    0 18px 40px rgba(0,0,0,.35);
+
+}
+
+
+
+.coffee-icon{
+
+    width:82px;
+
+    height:82px;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    font-size:45px;
+
+
+    border-radius:16px;
+
+
+    background:
+    rgba(255,255,255,.25);
+
+}
+
+
+
+.coffee-content h3{
+
+    color:#555;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+
+}
+
+
+.coffee-content h4{
+
+    color:#111;
+
+    font-size:22px;
+
+    margin-bottom:5px;
+
+}
+
+
+.coffee-content p{
+
+    color:#555;
+
+    font-size:16px;
+
+}
+
+/* ==========================
+       Coffee Hover Tip
+========================== */
+
+
+.coffee-card{
+
+    position:relative;
+
+}
+
+
+
+.coffee-tip{
+
+    position:absolute;
+
+
+    right:-170px;
+
+    top:50%;
+
+
+    transform:
+    translateY(-50%)
+    translateX(20px);
+
+
+    background:
+    rgba(20,20,20,.85);
+
+
+    color:white;
+
+
+    padding:14px 22px;
+
+
+    border-radius:18px;
+
+
+    font-size:18px;
+
+
+    font-weight:bold;
+
+
+    white-space:nowrap;
+
+
+    opacity:0;
+
+
+    pointer-events:none;
+
+
+    transition:.35s;
+
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.4);
+
+}
+
+
+/* 小箭头 */
+
+.coffee-tip::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    left:-10px;
+
+
+    top:50%;
+
+
+    transform:translateY(-50%);
+
+
+    border-width:10px 10px 10px 0;
+
+
+    border-style:solid;
+
+
+    border-color:
+
+    transparent rgba(20,20,20,.85) transparent transparent;
+
+}
+
+
+
+.coffee-card:hover .coffee-tip{
+
+
+    opacity:1;
+
+
+    transform:
+
+    translateY(-50%)
+    translateX(0);
+
 }
