@@ -339,27 +339,64 @@ h3{
 
 }
 
+.links{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+
+
 .links a{
 
-    display:inline-block;
+    display:flex;
 
-    margin:8px;
+    justify-content:center;
 
-    padding:12px 24px;
+    align-items:center;
+
+    gap:8px;
+
+
+    padding:12px 20px;
+
 
     border-radius:30px;
 
+
     text-decoration:none;
+
 
     color:#111;
 
-    background:rgba(255,255,255,.55);
+
+    background:
+    rgba(255,255,255,.55);
+
 
     font-weight:bold;
 
-    transition:all .3s ease;
+
+    transition:.3s;
+
 
 }
+
+
+
+.links a span{
+
+    font-size:18px;
+
+}
+
+
 
 .links a:hover{
 
@@ -367,7 +404,8 @@ h3{
 
     background:#fff;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.2);
 
 }
 
