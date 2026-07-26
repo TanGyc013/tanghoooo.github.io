@@ -17,9 +17,27 @@ html{
 
 body{
 
-    font-family:Arial,sans-serif;
+    font-family:
+    "SF Pro Display",
+    "PingFang SC",
+    Arial,
+    sans-serif;
 
-    background:url("star.jpg") center/cover fixed;
+
+    background:
+    radial-gradient(
+        circle at 50% -20%,
+        #333 0%,
+        transparent 40%
+    ),
+
+    linear-gradient(
+        180deg,
+        #000000,
+        #080808 45%,
+        #111111
+    );
+
 
     min-height:100vh;
 
@@ -58,7 +76,7 @@ body{
 .card,
 .side-card{
 
-    background:rgba(255,255,255,.28);
+    background:rgba(255,255,255,.12);
 
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
@@ -1415,5 +1433,47 @@ hr{
 
     translateY(-50%)
     translateX(0);
+
+}
+/* ==========================
+   鼠标跟随光球
+========================== */
+
+
+.cursor-glow{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+
+    width:120px;
+    height:120px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.45),
+rgba(255,255,255,.15) 40%,
+        transparent 70%
+    );
+
+
+    pointer-events:none;
+
+
+    transform:translate(-50%,-50%);
+
+
+    filter:blur(18px);
+
+
+    z-index:99999;
 
 }
