@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>问答环节</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+
+/* 页面居中 */
+
+body{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+}
+
+
+/* 问答大卡 */
+
+.qa-card{
+
+    width:900px;
+
+    max-width:90%;
+
+    padding:50px;
+
+    text-align:center;
+
+}
+
+
+/* 标题 */
+
+.qa-title{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+
+.qa-sub{
+
+    color:#777;
+
+    line-height:1.8;
+
+}
+
+
+/* 题目区域 */
+
+.question{
+
+    margin-top:50px;
+
+    text-align:left;
+
+}
+
+
+.question h2{
+
+    font-size:32px;
+
+}
+
+
+.question h3{
+
+    color:#777;
+
+    font-weight:400;
+
+}
+
+
+
+/* 选项 */
+
+.options{
+
+    display:flex;
+
+    gap:40px;
+
+    margin-top:40px;
+
+}
+
+
+.option{
+
+    flex:1;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.2);
+
+    border:
+    1px solid rgba(255,255,255,.3);
+
+    cursor:pointer;
+
+    position:relative;
+
+    transition:.3s;
+
+    font-size:22px;
+
+}
+
+
+.option:hover{
+
+    transform:translateY(-6px);
+
+    background:white;
+
+}
+
+
+/* hover提示 */
+
+.option::after{
+
+    content:attr(data-tip);
+
+    position:absolute;
+
+    bottom:-55px;
+
+    left:50%;
+
+    transform:
+    translateX(-50%);
+
+    background:#111;
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:15px;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    transition:.3s;
+
+}
+
+
+.option:hover::after{
+
+    opacity:1;
+
+}
+
+
+/* 进度 */
+
+.progress{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.2);
+
+    margin-top:30px;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="card qa-card">
+
+
+<div class="qa-title">
+
+💬 问答环节
+
+</div>
+
+
+<div class="qa-sub">
+
+看看你是否真正了解 TanGhoooo
+
+<br>
+
+Test how well you know TanGhoooo
+
+</div>
+
+
+
+<div class="progress" id="progress">
+
+1 / 4
+
+</div>
+
+
+
+<div class="question">
+
+
+<h2 id="question">
+
+</h2>
+
+
+<h3 id="english">
+
+</h3>
+
+
+<div class="options" id="options">
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+const questions=[
+
+{
+cn:"谁是世界上最帅的男人？",
+en:"Who is the most handsome man in the world?",
+
+options:[
+
+{
+text:"A. TYC",
+correct:true,
+tip:"直觉一般都是对的 😎"
+},
+
+{
+text:"B. 其他人",
+wrongPage:true,
+tip:"你那是没有眼科可以看了？"
+}
+
+]
+},
+
+
+{
+cn:"谁是使命召唤最强身法王？",
+en:"Who is the greatest movement player in Call of Duty?",
+
+options:[
+
+{
+text:"A. 菠萝 Pablo",
+correct:false,
+tip:"实打实的天花板"
+},
+
+{
+text:"B. TYC",
+correct:true,
+tip:"毋庸置疑"
+}
+
+]
+},
+
+
+{
+cn:"我爱喝什么咖啡？",
+en:"What coffee do I love?",
+
+options:[
+
+{
+text:"A. 耶加雪菲",
+correct:true,
+tip:"花香果甜"
+},
+
+{
+text:"B. 蓝山",
+correct:false,
+tip:"贵😅"
+},
+
+{
+text:"C. 意式拼配",
+correct:false,
+tip:"有点苦呀"
+}
+
+]
+},
+
+
+{
+cn:"主播爱玩哪个射击游戏？",
+en:"Which FPS game does the streamer love?",
+
+options:[
+
+{
+text:"A. PUBG",
+correct:false,
+tip:"偶尔玩，但不是最爱"
+},
+
+{
+text:"B. COD",
+correct:true,
+tip:"使命召唤 YYDS 🎯"
+},
+
+{
+text:"C. 盗版槟榔地下最烂构思作品",
+correct:false,
+tip:"懂得都懂 🤫"
+}
+
+]
+}
+
+];
+
+
+
+let current=0;
+
+
+
+function loadQuestion(){
+
+
+let q=questions[current];
+
+
+document.getElementById("progress").innerHTML=
+
+(current+1)+" / "+questions.length;
+
+
+
+document.getElementById("question").innerHTML=q.cn;
+
+
+document.getElementById("english").innerHTML=q.en;
+
+
+
+let box=document.getElementById("options");
+
+
+box.innerHTML="";
+
+
+
+q.options.forEach(option=>{
+
+
+let btn=document.createElement("div");
+
+
+btn.className="option";
+
+
+btn.innerHTML=option.text;
+
+
+if(option.tip){
+
+btn.dataset.tip=option.tip;
+
+}
+
+
+btn.onclick=function(){
+
+
+    // 第一题选择其他人，保持原来的跳转
+
+    if(current === 0 && option.text.includes("其他")){
+
+        window.location.href="wrong.html";
+
+        return;
+
+    }
+
+
+
+    if(option.correct){
+
+        showResult(true);
+
+    }else{
+
+        showResult(false);
+
+    }
+
+
+};
+
+
+box.appendChild(btn);
+
+
+});
+
+
+}
+
+
+function showResult(correct){
+
+
+let result=document.createElement("div");
+
+
+result.className="answer-result";
+
+
+
+if(correct){
+
+
+result.innerHTML=
+
+`
+
+<h2>✅ 你答对了！！</h2>
+
+<p>+1 分</p>
+
+`;
+
+
+
+}else{
+
+
+result.innerHTML=
+
+`
+
+<h2>❌ 不加分哦～</h2>
+
+`;
+
+
+
+}
+
+
+
+document.querySelector(".question")
+.appendChild(result);
+
+
+
+setTimeout(()=>{
+
+
+result.classList.add("hide");
+
+
+
+setTimeout(()=>{
+
+
+result.remove();
+
+
+nextQuestion();
+
+
+},500);
+
+
+
+},1200);
+
+
+
+}
+
+
+
+function nextQuestion(){
+
+
+current++;
+
+
+if(current>=questions.length){
+
+
+document.querySelector(".question").innerHTML=
+
+`
+
+<h2>🎉 完成！</h2>
+
+<h3>
+
+You finished the quiz!
+
+</h3>
+
+<p>
+
+感谢你了解 TanGhoooo 😎
+
+</p>
+
+`;
+
+
+document.getElementById("progress").style.display="none";
+
+
+return;
+
+
+}
+
+
+loadQuestion();
+
+
+}
+
+
+
+loadQuestion();
+
+
+
+</script>
+
+
+
+</body>
+
+
+</html>
